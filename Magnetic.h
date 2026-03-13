@@ -5,7 +5,7 @@
 class Magnetic :public Field
 {
 public:
-	double B = 0;
+	
 	Magnetic();
 	void run();
 };

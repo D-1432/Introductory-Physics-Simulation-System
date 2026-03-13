@@ -28,6 +28,10 @@ void Field::plotSingleObject(const string& filename, int objectIndex)
     script << "set title 'Object " << objectIndex << " trajectory'\n";
     script << "set xlabel 'x'\n";
     script << "set ylabel 'y'\n";
+ /*   if (this->B != 0)
+    {
+        script << "set size ratio -1\n";
+    }*/
     script << "plot '" << filename << "' using 2:3 with lines title 'Object " << objectIndex << "'\n";
     script << "pause -1 'Press Enter to close...'\n";   // 等待用户按键后关闭窗口
     script.close();
@@ -55,6 +59,10 @@ void Field::plotAllObjects(const vector<string>& filenames) {
     script << "set title 'All Objects Trajectories'\n";
     script << "set xlabel 'x'\n";
     script << "set ylabel 'y'\n";
+ /*   if (this->B != 0)
+    {
+        script << "set size ratio -1\n";
+    }*/
     script << "plot ";
     for (size_t i = 0; i < filenames.size(); ++i) {
         script << "'" << filenames[i] << "' using 2:3 with lines title 'Object " << i << "'";

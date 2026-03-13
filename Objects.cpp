@@ -5,6 +5,7 @@
 #include"Field.h"
 #include "Gravity.h"
 #include"Magnetic.h"
+#include"Multi-field coupling.h"
 using namespace std;
 
 Objects::Objects()
@@ -395,7 +396,7 @@ void Objects::modInfo()
 			while (p)
 			{
 				cout << "请选择它的类型：" << endl;
-				cout << "1. 方块\t 2.开发中" << endl;
+				cout << "1. 粒子\t 2.开发中" << endl;
 				cin >> dSelect;
 				switch (dSelect)
 				{
@@ -467,7 +468,7 @@ void Objects::Running()
 	system("pause");
 	system("cls");
 	cout << "请选择您要进行的仿真类型：" << endl
-		<< "1.净重力场 2.净磁场" << endl;
+		<< "1.净重力场 2.净磁场 3.耦合场" << endl;
 	int i = 0;
 	cin >> i;
 	switch (i)
@@ -482,6 +483,12 @@ void Objects::Running()
 	{
 		Magnetic m;
 		m.run();
+		break;
+	}
+	case 3:
+	{
+		coupling c;
+		c.runing();
 		break;
 	}
 	default:
