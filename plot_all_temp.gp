@@ -1,0 +1,5 @@
+set title 'All Objects Trajectories'
+set xlabel 'x'
+set ylabel 'y'
+plot 'B_run_0.txt' using 2:3 with lines title 'Object 0'
+pause -1 'Press Enter to close...'
