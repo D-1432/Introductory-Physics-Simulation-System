@@ -1,7 +1,7 @@
 #include<iostream>
 #include"Particle.h"
 
-Particle::Particle(int a, double m, double x0, double y0, double vx0, double vy0,double q)
+Particle::Particle(int a, double m, double x0, double y0, double vx0, double vy0, double q, double fx,double fy)
 {
 	this->m_Mass = m;
 	this->m_X = x0;
@@ -11,6 +11,8 @@ Particle::Particle(int a, double m, double x0, double y0, double vx0, double vy0
 	this->m_ID = a;
 	this->m_Name = "СЃзг";
 	this->m_Q = q;
+	this->m_Fx = fx;
+	this->m_Fy = fy;
 }
 void Particle::showInfo()
 {

@@ -24,6 +24,9 @@ public:
 	//特殊物理属性
 	double m_Q = 0;
 
+	double m_Fx = 0;
+	double m_Fy = 0;
+
 	//显示函数
 	virtual void showInfo();
 };

@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClInclude Include="Body.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="Force.h" />
     <ClInclude Include="Gravity.h" />
     <ClInclude Include="Magnetic.h" />
     <ClInclude Include="Multi-field coupling.h" />

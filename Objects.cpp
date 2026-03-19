@@ -129,6 +129,8 @@ void Objects::addObject()
 			double y = 0;
 			double vx = 0;
 			double vy = 0;
+			double fx = 0;
+			double fy = 0;
 			cout << "请输入第" << i + 1 << "个新物体的编号" << endl;
 			cin >> a;
 			while (1)
@@ -155,6 +157,17 @@ void Objects::addObject()
 			cin >> vy;
 			cout << "\n请输入带电荷量\nq = ";
 			cin >> q;
+			cout << "是否有初始受力？" << endl
+				<< "1.是   2.否" << endl;
+			int p = 0;
+			cin >> p;
+			if (p == 1)
+			{
+				cout << "fx = " << endl;
+				cin >> fx;
+				cout << "fy = " << endl;
+				cin >> fy;
+			}
 			Body* body = NULL;
 			int P = 1;
 			while (P)
@@ -166,7 +179,7 @@ void Objects::addObject()
 				{
 				case 1:
 				
-					body = new Particle(a, m, x, y, vx, vy, q);
+					body = new Particle(a, m, x, y, vx, vy, q,fx,fy);
 						P = 0;
 				
 					break;
@@ -211,7 +224,8 @@ void Objects::save()
 			<< this->Obj_Array[i]->m_Mass << "\t"
 			<< this->Obj_Array[i]->m_X << "  " << this->Obj_Array[i]->m_Y << "\t"
 			<< this->Obj_Array[i]->m_Vx << "  " << this->Obj_Array[i]->m_Vy << "\t"
-			<<this->Obj_Array[i]->m_Q
+			<<this->Obj_Array[i]->m_Q<<"\t"
+			<<this->Obj_Array[i]->m_Fx<<"    "<<this->Obj_Array[i]->m_Fy
 			<< endl;
 	}
 	ofs.close();
@@ -231,7 +245,9 @@ int Objects::get_BodyNum()
 	double vy = 0;
 	double q = 0;
 	int num = 0;
-	while (ifs >> a && ifs >> name && ifs >> m && ifs >> x && ifs >> y && ifs >> vx && ifs >> vy && ifs >> q)
+	double fx = 0;
+	double fy = 0;
+	while (ifs >> a && ifs >> name && ifs >> m && ifs >> x && ifs >> y && ifs >> vx && ifs >> vy && ifs >> q && ifs >> fx && ifs >> fy)
 	{
 		//统计人数
 		num++;
@@ -253,17 +269,19 @@ void Objects::init_Obj()
 	double y = 0;
 	double vx = 0;
 	double vy = 0;
+	double fx = 0;
+	double fy = 0;
 	int index = 0;
 
 	//这里有代码写的不好，后期开发感觉要变史山；
 
-	while (ifs >> a && ifs >> name && ifs >> m && ifs >> x && ifs >> y && ifs >> vx && ifs >> vy && ifs >> q)
+	while (ifs >> a && ifs >> name && ifs >> m && ifs >> x && ifs >> y && ifs >> vx && ifs >> vy && ifs >> q && ifs >> fx && ifs >> fy)
 	{
 		Body* body = NULL;
 
 		if (name == "粒子")
 		{
-			body = new Particle(a, m, x, y, vx, vy,q);
+			body = new Particle(a, m, x, y, vx, vy,q,fx,fy);
 		}
 
 		this->Obj_Array[index] = body;
@@ -378,6 +396,8 @@ void Objects::modInfo()
 			double y = 0;
 			double vx = 0;
 			double vy = 0;
+			double fx = 0;
+			double fy = 0;
 			cout << "请输入它的新编号：" << endl;
 			cin >> a;
 			cout << "请输入它的新质量 mass = " << endl;
@@ -393,6 +413,11 @@ void Objects::modInfo()
 			cout << "\n请输入带电荷量\nq = ";
 			cin >> q;
 			int p = 1;
+			double f[2] = { 0,0 };
+			cout << "\n请输入初始受力\n fx = ";
+			cin >> fx;
+			cout << "\n fy = ";
+			cin >> fy;
 			while (p)
 			{
 				cout << "请选择它的类型：" << endl;
@@ -401,7 +426,7 @@ void Objects::modInfo()
 				switch (dSelect)
 				{
 				case 1:
-					body = new Particle(a, m, x, y, vx, vy,q);
+					body = new Particle(a, m, x, y, vx, vy,q,fx,fy);
 					p = 0;
 					break;
 				default:
@@ -446,10 +471,12 @@ void Objects::findInfo()
 		}
 		if (index != -1)
 		{
-			cout << "编号为" << id << "的物体为：" << this->Obj_Array[index]->m_Name << "，质量为：" << this->Obj_Array[index]->m_Mass << "\t"
+			cout << "编号为" << id << "的物体为：" << endl;
+			this->Obj_Array[index]->showInfo();
+			/*cout << "编号为" << id << "的物体为：" << this->Obj_Array[index]->m_Name << "，质量为：" << this->Obj_Array[index]->m_Mass << "\t"
 				<< "坐标为：(" << this->Obj_Array[index]->m_X << "," << this->Obj_Array[index]->m_Y << ")\t"
 				<< "速度：Vx = " << this->Obj_Array[index]->m_Vx << ",Vy = " << this->Obj_Array[index]->m_Vy << "\t"
-				<< endl;
+				<< endl;*/
 		}
 		else
 		{
