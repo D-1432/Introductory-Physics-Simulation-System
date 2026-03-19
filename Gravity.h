@@ -7,7 +7,7 @@ class Gravity :public Field
 public:
 
 	Gravity();
-	void run();
+
 
 
 

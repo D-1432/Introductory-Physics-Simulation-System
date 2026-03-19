@@ -17,6 +17,17 @@ coupling::coupling()
 			<< "= ";
 		cin >> B;
 	}
+	cout << "是否添加电场？\n1.添加\t2.不添加\n";
+	cin >> E_select;
+	if (E_select == 1)
+	{
+		cout << "请设置场强度 Ex " << endl
+			<< "= ";
+		cin >> Ex;
+		cout << "\n请设置场强度 Ey " << endl
+			<< "= ";
+		cin >> Ey;
+	}
 }
 void coupling::runing()
 {
@@ -42,12 +53,37 @@ void coupling::runing()
 		for (int j = 1; j <= step; j++)
 		{
 			ofs << (DT * (j - 1)) << setw(15) << x << setw(15) << y << setw(15) << vx << setw(15) << vy << endl;
-			if (B_select == 1 && G_select == 1) {
+			if (B_select == 1 && G_select == 1 && E_select == 1)
+			{
 				// 磁场和重力场耦合：使用 Boris 方法（二阶精度）
 				double half_dt = 0.5 * DT;
 
-				// 半重力加速度（假设重力方向为 +y，与原始代码一致）
-				vy += G * half_dt;
+				// 半重力+电场加速度（假设重力方向为 +y,G=1）
+				vy += (((Ey*q/m)+G )* half_dt);
+				vx += ((Ex * q/m) * half_dt);
+
+				// 磁场旋转：速度矢量绕垂直于平面的轴旋转角度 w*DT
+				double theta = w * DT;
+				double vx_new = vx * cos(theta) - vy * sin(theta);
+				double vy_new = vx * sin(theta) + vy * cos(theta);
+				vx = vx_new;
+				vy = vy_new;
+
+				// 另半重力+电场加速度
+				vy += (((Ey * q / m) + G) * half_dt);
+				vx += ((Ex * q / m) * half_dt);
+				// 更新位置（使用新速度）
+				x += vx * DT;
+				y += vy * DT;
+			}
+			else if (G_select == 1 && B_select)
+			{
+				// 磁场和重力场耦合：使用 Boris 方法（二阶精度）
+				double half_dt = 0.5 * DT;
+
+				// 半重力加速度（假设重力方向为 +y,G=1）
+				vy +=  G * half_dt;
+				
 
 				// 磁场旋转：速度矢量绕垂直于平面的轴旋转角度 w*DT
 				double theta = w * DT;
@@ -57,13 +93,48 @@ void coupling::runing()
 				vy = vy_new;
 
 				// 另半重力加速度
-				vy += G * half_dt;
-
+				vy += (G * half_dt);
+				
 				// 更新位置（使用新速度）
 				x += vx * DT;
 				y += vy * DT;
 			}
-			else if (B_select == 1) {
+			else if (G_select == 1 && E_select == 1)
+			{
+				
+				
+				vy += (((Ey * q / m) + G) * DT);
+				vx += ((Ex * q / m) * DT);
+				
+				// 更新位置（使用新速度）
+				x += vx * DT;
+				y += vy * DT;
+			}
+			else if (E_select == 1 && B_select == 1)
+			{
+				// 磁场和重力场耦合：使用 Boris 方法（二阶精度）
+				double half_dt = 0.5 * DT;
+
+				// 半重力+电场加速度（假设重力方向为 +y,G=1）
+				vy += ((Ey * q / m)  * half_dt);
+				vx += ((Ex * q / m) * half_dt);
+
+				// 磁场旋转：速度矢量绕垂直于平面的轴旋转角度 w*DT
+				double theta = w * DT;
+				double vx_new = vx * cos(theta) - vy * sin(theta);
+				double vy_new = vx * sin(theta) + vy * cos(theta);
+				vx = vx_new;
+				vy = vy_new;
+
+				// 另半重力+电场加速度
+				vy += ((Ey * q / m)  * half_dt);
+				vx += ((Ex * q / m) * half_dt);
+				// 更新位置（使用新速度）
+				x += vx * DT;
+				y += vy * DT;
+			}
+			else if (B_select == 1) 
+			{
 				// 仅有磁场：速度旋转，位置用新速度更新
 				double theta = w * DT;
 				double vx_new = vx * cos(theta) - vy * sin(theta);
@@ -73,14 +144,24 @@ void coupling::runing()
 				x += vx * DT;
 				y += vy * DT;
 			}
-			else if (G_select == 1) {
-				// 仅有重力：匀加速运动（原始公式不变）
+			else if (G_select == 1) 
+			{
+				// 仅有重力：匀加速运动
 				x += vx * DT;
 				y += vy * DT + 0.5 * G * DT * DT;
 				vy += G * DT;
 				// vx 保持不变
 			}
-			else {
+			else if (E_select == 1)
+			{
+				//仅有电场：匀加速运动
+				x += vx * DT;
+				y += vy * DT;
+				vx += q * Ex / m * DT;
+				vy += q * Ey / m * DT;
+			}
+			else
+			{
 				// 无场：匀速直线运动
 				x += vx * DT;
 				y += vy * DT;

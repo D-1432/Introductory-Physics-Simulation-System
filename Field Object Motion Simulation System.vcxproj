@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Body.h" />
+    <ClInclude Include="Electric.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="Force.h" />
     <ClInclude Include="Gravity.h" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="Electric.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="Magnetic.cpp" />

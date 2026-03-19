@@ -7,5 +7,5 @@ class Magnetic :public Field
 public:
 	
 	Magnetic();
-	void run();
+	
 };

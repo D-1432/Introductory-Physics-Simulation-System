@@ -45,6 +45,9 @@
     <ClInclude Include="Force.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Electric.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="仿真系统.cpp">
@@ -69,6 +72,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Multi-field coupling.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Electric.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

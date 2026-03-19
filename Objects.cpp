@@ -494,36 +494,38 @@ void Objects::Running()
 	cout << "即将进入仿真系统" << endl;
 	system("pause");
 	system("cls");
-	cout << "请选择您要进行的仿真类型：" << endl
-		<< "1.净重力场 2.净磁场 3.耦合场" << endl;
-	int i = 0;
-	cin >> i;
-	switch (i)
-	{
-	case 1:
-	{
-		Gravity g;
-		g.run();
-		break;
-	}
-	case 2:
-	{
-		Magnetic m;
-		m.run();
-		break;
-	}
-	case 3:
-	{
 		coupling c;
 		c.runing();
-		break;
-	}
-	default:
-	{
-		cout << "开发中，敬请期待！" << endl;
-		break;
-	}
-	}
+	/*cout << "请选择您要进行的仿真类型：" << endl
+		<< "1.净重力场 2.净磁场 3.耦合场" << endl;*/
+	//int i = 0;
+	//cin >> i;
+	//switch (i)
+	//{
+	//case 1:
+	//{
+	//	coupling c;
+	//	c.runing();
+	//	break;
+	//}
+	//case 2:
+	//{
+	//	coupling c;
+	//	c.runing();
+	//	break;
+	//}
+	//case 3:
+	//{
+	//	coupling c;
+	//	c.runing();
+	//	break;
+	//}
+	//default:
+	//{
+	//	cout << "开发中，敬请期待！" << endl;
+	//	break;
+	//}
+	//}
 	
 
 }
