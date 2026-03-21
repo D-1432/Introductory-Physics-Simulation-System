@@ -1,25 +1,26 @@
-#include<iostream>
-#include"Particle.h"
+#include "Particle.h"
 
-Particle::Particle(int a, double m, double x0, double y0, double vx0, double vy0, double q, double fx,double fy)
+Particle::Particle(int id, double mass, double x0, double y0,
+    double vx0, double vy0, double q, double fx, double fy)
 {
-	this->m_Mass = m;
-	this->m_X = x0;
-	this->m_Y = y0;
-	this->m_Vx = vx0;
-	this->m_Vy = vy0;
-	this->m_ID = a;
-	this->m_Name = "粒子";
-	this->m_Q = q;
-	this->m_Fx = fx;
-	this->m_Fy = fy;
+    m_ID = id;
+    m_Name = "粒子";
+    m_Mass = mass;
+    m_X = x0;
+    m_Y = y0;
+    m_Vx = vx0;
+    m_Vy = vy0;
+    m_Q = q;
+    m_Fx = fx;
+    m_Fy = fy;
 }
+
 void Particle::showInfo()
 {
-	cout << "物体编号： " << this->m_ID
-		<< "\t物体类型： " << this->m_Name
-		<< "\t物体质量： " << this->m_Mass
-		<< "\t物体坐标： m_X = " << this->m_X << "    m_Y = " << this->m_Y
-		<< "\t物体速度： m_Vx = " << this->m_Vx << "    m_Vy = " <<this->m_Vy
-		<<"\n物体的带电荷量： m_Q = "<<this->m_Q << endl;
+    cout << "编号：" << m_ID
+        << "\t类型：" << m_Name
+        << "\t质量：" << m_Mass
+        << "\t坐标：(" << m_X << "," << m_Y << ")"
+        << "\t速度：(" << m_Vx << "," << m_Vy << ")"
+        << "\t电荷量：" << m_Q << endl;
 }

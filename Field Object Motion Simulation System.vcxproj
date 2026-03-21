@@ -124,27 +124,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Body.h" />
-    <ClInclude Include="Electric.h" />
+    <ClInclude Include="BodyManager.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="ElectricField.h" />
     <ClInclude Include="Field.h" />
-    <ClInclude Include="Force.h" />
-    <ClInclude Include="Gravity.h" />
-    <ClInclude Include="Magnetic.h" />
-    <ClInclude Include="Multi-field coupling.h" />
-    <ClInclude Include="Objects.h" />
+    <ClInclude Include="GravityField.h" />
+    <ClInclude Include="Integrator.h" />
+    <ClInclude Include="MagneticField.h" />
     <ClInclude Include="Particle.h" />
-    <ClInclude Include="参数控制.h" />
-    <ClInclude Include="标头.h" />
+    <ClInclude Include="Plotter.h" />
+    <ClInclude Include="Simulation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
-    <ClCompile Include="Electric.cpp" />
-    <ClCompile Include="Field.cpp" />
-    <ClCompile Include="Gravity.cpp" />
-    <ClCompile Include="Magnetic.cpp" />
-    <ClCompile Include="Multi-field coupling.cpp" />
-    <ClCompile Include="Objects.cpp" />
+    <ClCompile Include="BodyManager.cpp" />
+    <ClCompile Include="ElectricField.cpp" />
+    <ClCompile Include="GravityField.cpp" />
+    <ClCompile Include="Integrator.cpp" />
+    <ClCompile Include="MagneticField.cpp" />
     <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="仿真系统.cpp" />
+    <ClCompile Include="Plotter.cpp" />
+    <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="主程序.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

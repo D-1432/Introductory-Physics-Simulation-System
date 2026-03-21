@@ -15,15 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="标头.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="参数控制.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Objects.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Body.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -33,30 +24,33 @@
     <ClInclude Include="Particle.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Gravity.h">
+    <ClInclude Include="MagneticField.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Magnetic.h">
+    <ClInclude Include="BodyManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Multi-field coupling.h">
+    <ClInclude Include="Constants.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Force.h">
+    <ClInclude Include="ElectricField.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Electric.h">
+    <ClInclude Include="GravityField.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Integrator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Plotter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="仿真系统.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Objects.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Field.cpp">
+    <ClCompile Include="GravityField.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
@@ -65,16 +59,25 @@
     <ClCompile Include="Body.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Gravity.cpp">
+    <ClCompile Include="MagneticField.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Magnetic.cpp">
+    <ClCompile Include="ElectricField.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Multi-field coupling.cpp">
+    <ClCompile Include="BodyManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Electric.cpp">
+    <ClCompile Include="Integrator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Plotter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="主程序.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

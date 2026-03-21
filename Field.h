@@ -1,25 +1,16 @@
 #pragma once
-#include"Objects.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cstdlib>   // system()
-#include <vector>
-class  Field :public Objects
+
+// 物理场基类，只提供参数查询接口
+class Field
 {
 public:
-	int num = 0;
-	double m = 0;
-	double x = 0, y = 0, vx = 0, vy = 0;
-	double q = 0;
-	double B = 0;
-	double Ex = 0;
-	double Ey = 0;
-	double fx = 0;
-	double fy = 0;
-	Field();
-	void plotSingleObject(const std::string& filename, int objectIndex);
-	void plotAllObjects(const std::vector<std::string>& filenames);
-	void plotSimulationResults(const std::string& filePrefix, int numObjects, bool wantAllInOne = true);
-	~Field();
+    virtual ~Field() = default;
+
+    // 重力加速度
+    virtual double getG() const { return 0.0; }
+    // 磁场强度（标量，假设垂直于平面）
+    virtual double getB() const { return 0.0; }
+    // 电场强度分量
+    virtual double getEx() const { return 0.0; }
+    virtual double getEy() const { return 0.0; }
 };
